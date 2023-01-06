@@ -1,3 +1,4 @@
+#CRIANDO UM MAPA DO BRASIL COM OS IDHS DOS ESTADOS
 # Instalação de pacotes necessários
 
 pacotes <- c("rgdal","raster","tmap","maptools","sf","rgeos","sp","adehabitatHR",
@@ -15,6 +16,7 @@ if(sum(as.numeric(!pacotes %in% installed.packages())) != 0){
   sapply(pacotes, require, character = T) 
 }
 
+rm(pacotes)
 # Baixar MAPA do BRASIL no site do IBGE: https://www.ibge.gov.br/geociencias/organizacao-do-territorio/malhas-territoriais/15774-malhas.html?=&t=acesso-ao-produto
 # IBGE > Malha Municipal > Brasil > Unidades da Federação.
 # o arquivo é um zip com 5 itens intitulado "BR_UF_2021".
@@ -158,6 +160,7 @@ shp_dados_br %>%
                color = "black") +
   labs(x = "Longitude",
        y = "Latitude",
-       fill = "IDHM") +
+       fill = "IDHM", "NM_UF") +
   scale_fill_viridis_c()+
   theme_bw()
+plot.new()
